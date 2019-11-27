@@ -1,4 +1,4 @@
-# What does this do?
+# What does it do?
 
 AWS-OpenAPI-Lint is a simple linter to check your OpenAPI 3 yaml spec for inconsistencies and violations.
 
@@ -11,7 +11,15 @@ It contains rules for checking whether:
 - CORS rules allow all verbs mentioned in the path
 - CORS rules are present
 - amazon integration is present
-- path param present in `requestParameters` is not used in path parameters and vice-versa if integration type is not `http_proxy`
+- path param present in `requestParameters` is not used in path parameters and vice-versa
+
+# Roadmap
+
+- [ ] Ignore path-params if `http_proxy` integration type used
+- [ ] Support json specs
+- [ ] Add option to disable rules via CLI
+- [ ] Add option to disable rules for specific paths
+- [ ] Add warning threshold to not return with status code other than 0 if limit not exceeded
 
 # Installation
 
@@ -25,4 +33,6 @@ or simply add the script directory's path to `$PATH` by running
 
 # Usage
 
-Run `aws-openapi-lint path/to/spec.yml`
+Run `aws-openapi-lint path/to/spec.yml`.
+
+The program terminates with exit code equal to the amount of violations found.
