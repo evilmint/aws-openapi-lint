@@ -29,6 +29,12 @@ It contains rules for checking whether:
 
 # Installation
 
+```
+git clone --recursive https://github.com/evilmint/aws-openapi-lint.git
+cd aws-openapi-lint
+python setup.py install
+```
+
 One of the options to use the script from the shell is to create a symlink to `main.py` by running
 
 `sudo ln -s /path/to/main.py /usr/local/bin/aws-openapi-lint`
