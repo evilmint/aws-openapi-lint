@@ -1,6 +1,6 @@
 # What does it do?
 
-AWS-OpenAPI-Lint is a simple linter to check OpenAPI 3 yaml specs for inconsistencies and violations.
+AWS-OpenAPI-Lint is a simple OpenAPI 3 yaml spec linter designed for checking API Gateway integration.
 
 It contains rules for checking whether:
 
@@ -33,6 +33,6 @@ or simply add the script directory's path to `$PATH` by running
 
 # Usage
 
-Run `aws-openapi-lint path/to/spec.yml`.
+Run `aws-openapi-lint path/to/spec.yml`
 
 The program terminates with exit code equal to the amount of violations found.
