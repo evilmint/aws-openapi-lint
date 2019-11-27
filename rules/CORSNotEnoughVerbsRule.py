@@ -1,7 +1,5 @@
-import re
+from rule_validator import RuleViolation
 
-from RuleValidator import RuleViolation
-from sets import Set
 
 class CORSNotEnoughVerbsRule:
     def __init__(self):
@@ -41,7 +39,7 @@ class CORSNotEnoughVerbsRule:
 
                     split_methods = map(lambda x: x.lower().strip(), methods[1:-1].split(','))
 
-                    symmetric_difference = Set(verbs).symmetric_difference(Set(split_methods))
+                    symmetric_difference = set(verbs).symmetric_difference(set(split_methods))
 
                     for unsupported_verb in symmetric_difference:
                         message = 'Extra HTTP verb {} included in path or request mapping.'.format(unsupported_verb)

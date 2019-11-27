@@ -10,7 +10,7 @@ from rules.NoCORSPresentRule import NoCORSPresentRule
 from rules.PathParamNotMappedRule import PathParamNotMappedRule
 from rules.AuthorizerOnOptionsRule import AuthorizerOnOptionsRule
 from rules.AuthorizerReferencedButMissingRule import AuthorizerReferencedButMissingRule
-from RuleValidator import *
+from rule_validator import *
 import sys
 
 

@@ -1,4 +1,4 @@
-from RuleValidator import RuleViolation
+from rule_validator import RuleViolation
 
 
 class AuthorizerReferencedButMissingRule:

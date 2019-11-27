@@ -1,7 +1,6 @@
 import re
 
-from RuleValidator import RuleViolation
-from sets import Set
+from rule_validator import RuleViolation
 
 
 class CORSInconsistentHeadersRule:
@@ -36,7 +35,7 @@ class CORSInconsistentHeadersRule:
                     split_headers = map(lambda x: x.strip(), methods[1:-1].split(','))
                     split_headers = filter(lambda h: len(h.strip()) > 0, split_headers)
 
-                    symmetric_difference = Set(headers).symmetric_difference(Set(split_headers))
+                    symmetric_difference = set(headers).symmetric_difference(set(split_headers))
 
                     for unsupported_header in symmetric_difference:
                         message = 'Extra Allow-Header "{}" included in parameters or responseParameters.'.format(unsupported_header)
