@@ -1,6 +1,6 @@
 # What does it do?
 
-AWS-OpenAPI-Lint is a simple linter to check your OpenAPI 3 yaml spec for inconsistencies and violations.
+AWS-OpenAPI-Lint is a simple linter to check OpenAPI 3 yaml specs for inconsistencies and violations.
 
 It contains rules for checking whether:
 
@@ -11,7 +11,7 @@ It contains rules for checking whether:
 - CORS rules allow all verbs mentioned in the path
 - CORS rules are present
 - amazon integration is present
-- path param present in `requestParameters` is not used in path parameters and vice-versa
+- path parameters present in `requestParameters` are not used in the direct path parameters and vice-versa
 
 # Roadmap
 
