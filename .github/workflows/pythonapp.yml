@@ -28,3 +28,9 @@ jobs:
       run: |
         pip install pytest
         pytest
+    - name: Gather coverage with pytest-cov
+      run: |
+        pip install pytest-cov
+        pip install codecov
+        pytest --cov=./
+        codecov --token=${{ Secrets.CODECOV_TOKEN }}
