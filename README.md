@@ -19,7 +19,7 @@ It contains rules for checking whether:
 - [ ] Ignore path-params if `http_proxy` integration type used
 - [ ] Add option to disable rules via CLI
 - [ ] Add option to disable rules for specific paths
-- [ ] Add warning threshold to not return with status code other than 0 if limit not exceeded
+- [ ] Add warning threshold to return with status code 0 if limit not exceeded
 
 # Installation
 
