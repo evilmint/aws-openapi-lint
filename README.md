@@ -4,6 +4,8 @@
 
 AWS-OpenAPI-Lint is a simple OpenAPI 3 yaml / json spec linter designed for checking API Gateway integration.
 
+## Rules
+
 It contains rules for checking whether:
 
 - you have an authorizer on OPTIONS
@@ -15,7 +17,7 @@ It contains rules for checking whether:
 - amazon integration is present
 - path parameters present in `requestParameters` are not used in the direct path parameters and vice-versa
 
-# Roadmap
+## Roadmap
 
 - [X] Support json specs
 - [ ] Ignore path-params if `http_proxy` integration type used
@@ -27,7 +29,7 @@ It contains rules for checking whether:
 - [ ] Publish to PyPI or alike
 - [X] Configure properly up GitHub actions to run tests on push
 
-# Installation
+## Installation
 
 ```
 git clone --recursive https://github.com/evilmint/aws-openapi-lint.git
@@ -43,7 +45,7 @@ or simply add the script directory's path to `$PATH` by running
 
 `PATH=$PATH:/path/to/mainpy/dir`
 
-# Usage
+## Usage
 
 Run `aws-openapi-lint path/to/spec.yml`
 
