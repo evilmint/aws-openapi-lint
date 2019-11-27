@@ -18,6 +18,10 @@ class PathParamNotMappedRule:
                 if path_verb.lower() == 'options':
                     continue
 
+                if 'x-amazon-apigateway-integration' not in spec['paths'][path][path_verb] \
+                        or 'requestParameters' not in spec['paths'][path][path_verb]['x-amazon-apigateway-integration']:
+                    continue
+
                 integration = spec['paths'][path][path_verb]['x-amazon-apigateway-integration']
 
                 if integration['type'].lower() == 'mock':

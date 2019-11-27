@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/evilmint/aws-openapi-lint/branch/master/graph/badge.svg)](https://codecov.io/gh/evilmint/aws-openapi-lint)
+
 # What does it do?
 
 AWS-OpenAPI-Lint is a simple OpenAPI 3 yaml / json spec linter designed for checking API Gateway integration.
