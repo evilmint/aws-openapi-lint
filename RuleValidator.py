@@ -1,4 +1,5 @@
 import yaml
+import json
 
 
 class RuleViolation:
@@ -11,6 +12,10 @@ class RuleViolation:
         return self.identifier == other.identifier
 
 
+class InvalidFormatException(Exception):
+    pass
+
+
 class RuleValidator:
     def __init__(self, file_path):
         self.file_path = file_path
@@ -19,8 +24,13 @@ class RuleValidator:
     def validate(self):
         violations = []
 
+        ext = self.file_path.split('.')[::-1][0]
+
+        if ext not in ['yml', 'yaml', 'json']:
+            raise InvalidFormatException()
+
         with open(self.file_path) as file:
-            spec = yaml.load(file, Loader=yaml.FullLoader)
+            spec = self.load_spec_file(file, ext)
 
             for rule in self.rules:
                 rule_violations = rule.validate(spec)
@@ -31,3 +41,9 @@ class RuleValidator:
 
     def add_rule(self, rule):
         self.rules.append(rule)
+
+    def load_spec_file(self, file, ext):
+        if ext in ['yml', 'yaml']:
+            return yaml.load(file, Loader=yaml.FullLoader)
+        elif ext == 'json':
+            return json.load(file)

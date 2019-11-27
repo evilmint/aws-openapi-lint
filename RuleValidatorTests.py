@@ -52,6 +52,11 @@ class RuleValidatorTestCase(unittest.TestCase):
         rule_validator.add_rule(ConflictingHttpVerbsRule())
         self.assertEqual([], rule_validator.validate())
 
+    def test_ok_spec_json(self):
+        rule_validator = RuleValidator('test_files/ok_spec_json.json')
+        rule_validator.add_rule(ConflictingHttpVerbsRule())
+        self.assertEqual([], rule_validator.validate())
+
     def test_should_not_return_violations_if_path_param_not_mapped_and_mock_integration(self):
         rule_validator = RuleValidator(test_spec_path('path_parameter_not_mapped_mock'))
         rule_validator.add_rule(PathParamNotMappedRule())

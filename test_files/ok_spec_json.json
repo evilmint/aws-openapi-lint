@@ -1,0 +1,24 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Test",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/test": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "http",
+          "uri": "http://some.uri",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # What does it do?
 
-AWS-OpenAPI-Lint is a simple OpenAPI 3 yaml spec linter designed for checking API Gateway integration.
+AWS-OpenAPI-Lint is a simple OpenAPI 3 yaml / json spec linter designed for checking API Gateway integration.
 
 It contains rules for checking whether:
 
@@ -15,8 +15,8 @@ It contains rules for checking whether:
 
 # Roadmap
 
+- [X] Support json specs
 - [ ] Ignore path-params if `http_proxy` integration type used
-- [ ] Support json specs
 - [ ] Add option to disable rules via CLI
 - [ ] Add option to disable rules for specific paths
 - [ ] Add warning threshold to not return with status code other than 0 if limit not exceeded
