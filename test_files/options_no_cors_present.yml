@@ -1,0 +1,49 @@
+openapi: "3.0.1"
+info:
+  title: "Test"
+  version: "1.0.0"
+paths:
+  /test/resource/{resourceId}/{otherId}:
+    get:
+      parameters:
+        - name: "resourceId"
+          in: "path"
+          required: true
+          description: "Some path param"
+          schema:
+            type: "string"
+        - name: "otherId"
+          in: "path"
+          required: true
+          description: "Some path param"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "200 response"
+          content: {}
+        400:
+          description: "400 response"
+      security:
+        - Some-Authorizer: []
+      x-amazon-apigateway-integration:
+        type: "http"
+        requestParameters:
+          integration.request.header.resourceId: "method.request.header.resourceId"
+          integration.request.header.otherId: "method.request.header.otherId"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
+        responses:
+          200:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+    options:
+      x-amazon-apigateway-integration:
+        type: "mock"
+        passthroughBehavior: "when_no_templates"
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        responses:
+          default:
+            statusCode: "200"

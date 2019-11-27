@@ -1,0 +1,32 @@
+openapi: "3.0.1"
+info:
+  title: "Test"
+  version: "1.0.0"
+paths:
+  /test/resource/{resourceId}:
+    get:
+      parameters:
+        - name: "resourceId"
+          in: "path"
+          required: true
+          description: "Some description"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "200 response"
+          content: {}
+        400:
+          description: "400 response"
+          content: {}
+      security:
+        - Some-Authorizer: []
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_templates"
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "mock"

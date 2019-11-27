@@ -1,0 +1,19 @@
+openapi: "3.0.1"
+info:
+  title: "Test"
+  version: "1.0.0"
+paths:
+  /test/resource/:
+    options:
+      responses:
+        200:
+          description: "200 response"
+          content: {}
+      security:
+        - Test-Authorizer: []
+      x-amazon-apigateway-integration:
+        type: "http"
+        requestParameters:
+          integration.request.header.some_header: "context.authorizer.some_variable"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
