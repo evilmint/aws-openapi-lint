@@ -21,6 +21,8 @@ It contains rules for checking whether:
 - [ ] Add option to disable rules for specific paths
 - [ ] Add warning threshold to return with status code 0 if limit not exceeded
 - [ ] Fix flake8 violations
+- [ ] Add a license
+- [ ] Publish to PyPI or alike
 - [X] Configure properly up GitHub actions to run tests on push
 
 # Installation
