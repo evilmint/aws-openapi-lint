@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/evilmint/aws-openapi-lint/branch/master/graph/badge.svg)](https://codecov.io/gh/evilmint/aws-openapi-lint)
+[![codecov](https://codecov.io/gh/evilmint/aws-openapi-lint/branch/master/graph/badge.svg)](https://codecov.io/gh/evilmint/aws-openapi-lint) [![license](https://img.shields.io/github/license/evilmint/aws-openapi-lint)](https://github.com/evilmint/aws-openapi-lint)
 
 # What does it do?
 
