@@ -23,7 +23,7 @@ It contains rules for checking whether:
 - [ ] Ignore path-params if `http_proxy` integration type used
 - [ ] Add option to disable rules via CLI
 - [ ] Add option to disable rules for specific paths
-- [ ] Add warning threshold to return with status code 0 if limit not exceeded
+- [X] Add warning threshold to return with status code 0 if limit not exceeded
 - [X] Fix flake8 violations
 - [X] Add a license
 - [ ] Publish to PyPI or alike

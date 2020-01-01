@@ -18,9 +18,7 @@ class NoCORSPresentRule:
             for response in integration['responses']:
                 if 'responses' not in integration or response not in integration['responses'] or \
                         'responseParameters' not in integration['responses'][response]:
-                    violations.append(RuleViolation('options_no_cors_present',
-                                                    message='No OPTIONS',
-                                                    path=path))
+                    violations.append(self.no_options_present_rule_violation(path))
                     continue
 
                 response_params = integration['responses'][response]['responseParameters']
@@ -33,3 +31,8 @@ class NoCORSPresentRule:
                                                     path=path))
 
         return violations
+
+    def no_options_present_rule_violation(self, path):
+        return RuleViolation('options_no_cors_present',
+                             message='No OPTIONS',
+                             path=path)

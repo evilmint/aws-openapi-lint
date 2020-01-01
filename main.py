@@ -12,6 +12,7 @@ from rules.AuthorizerOnOptionsRule import AuthorizerOnOptionsRule
 from rules.AuthorizerReferencedButMissingRule import AuthorizerReferencedButMissingRule
 from rule_validator import RuleValidator
 import sys
+import argparse
 
 
 def print_violations(violations):
@@ -34,7 +35,14 @@ if __name__ == '__main__':
         print('File path not passed as command line argument.')
         exit(1)
 
-    rule_validator = RuleValidator(sys.argv[1])
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('lint', help='sum the integers (default: find the max)')
+    parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False)
+    parser.add_argument('--warning-threshold', default=-1, type=int)
+
+    args = parser.parse_args()
+
+    rule_validator = RuleValidator(args.lint)
     rule_validator.add_rule(ConflictingHttpVerbsRule())
     rule_validator.add_rule(MissingAmazonIntegrationRule())
     rule_validator.add_rule(PathParamNotMappedRule())
@@ -51,4 +59,11 @@ if __name__ == '__main__':
     else:
         print_violations(violations)
 
-    exit(len(violations))
+    if args.treat_errors_as_warnings:
+        if args.warning_threshold != -1 and len(violations) > args.warning_threshold:
+            print("Warning threshold exceeded: {}/{}".format(len(violations), args.warning_threshold))
+            exit(1)
+        else:
+            exit(0)
+    else:
+        exit(0 if len(violations) == 0 else 1)
