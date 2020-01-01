@@ -47,17 +47,17 @@ or simply add the script directory's path to `$PATH` by running
 
 ## Usage
 
-Run `aws-openapi-lint lint path/to/spec.yml`
+Run `aws-openapi-lint path/to/spec.yml`
 
 ```
-usage: aws-openapi-lint [-h] [--treat-errors-as-warnings]
+usage: aws-openapi-lint / main.py [-h] [--treat-errors-as-warnings]
                [--warning-threshold WARNING_THRESHOLD]
-               lint
+               lint_file
 
 Process some integers.
 
 positional arguments:
-  lint                  Specify path to the openapi schema file.
+  lint_file             Specify path to the openapi schema file.
 
 optional arguments:
   -h, --help            show this help message and exit

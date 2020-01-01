@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding=utf-8
 
 from bcolors import bcolors
@@ -30,21 +30,24 @@ def print_no_violations():
     print(bcolors.OKGREEN + "0 violations found. Well done 💚")
 
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('lint_file', help='Specify path to the openapi schema file.')
+    parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False,
+                        help='Treats errors as warnings (exit code will be 0 unless warning threshold is specified')
+    parser.add_argument('--warning-threshold', default=-1, type=int, help='Warning threshold which when surpassed '
+                                                                          'renders exit code to become 1)')
+    return parser.parse_args()
+
+
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         print('File path not passed as command line argument.')
         exit(1)
 
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('lint', help='Specify path to the openapi schema file.')
-    parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False,
-                        help='Treats errors as warnings (exit code will be 0 unless warning threshold is specified')
-    parser.add_argument('--warning-threshold', default=-1, type=int, help='Warning threshold which when surpassed '
-                                                                          'renders exit code to become 1)')
+    args = parse_arguments()
 
-    args = parser.parse_args()
-
-    rule_validator = RuleValidator(args.lint)
+    rule_validator = RuleValidator(args.lint_file)
     rule_validator.add_rule(ConflictingHttpVerbsRule())
     rule_validator.add_rule(MissingAmazonIntegrationRule())
     rule_validator.add_rule(PathParamNotMappedRule())
@@ -66,6 +69,6 @@ if __name__ == '__main__':
             print("Warning threshold exceeded: {}/{}".format(len(violations), args.warning_threshold))
             exit(1)
         else:
-            exit(0)
+            exit()
     else:
         exit(0 if len(violations) == 0 else 1)
