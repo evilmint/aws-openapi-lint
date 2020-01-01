@@ -1,5 +1,3 @@
-import re
-
 from rule_validator import RuleViolation
 
 
@@ -38,7 +36,8 @@ class CORSInconsistentHeadersRule:
                     symmetric_difference = set(headers).symmetric_difference(set(split_headers))
 
                     for unsupported_header in symmetric_difference:
-                        message = 'Extra Allow-Header "{}" included in parameters or responseParameters.'.format(unsupported_header)
+                        message = 'Extra Allow-Header "{}" included in parameters or responseParameters.'\
+                            .format(unsupported_header)
                         violations.append(RuleViolation('options_cors_incosistent_headers',
                                                         message=message,
                                                         path=path))

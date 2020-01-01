@@ -1,5 +1,3 @@
-import re
-
 from rule_validator import RuleViolation
 
 
