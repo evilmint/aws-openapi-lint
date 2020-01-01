@@ -36,4 +36,3 @@ class PathParamNotMappedRule:
                                                         path=path))
 
         return violations
-

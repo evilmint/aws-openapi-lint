@@ -42,12 +42,15 @@ def get_path_headers(spec, path):
 
     return header_parameters
 
+
 def integration_response_contains_parameters(spec, path, verb, response, parameters):
     response_params = get_apigateway_integration(spec, path, verb)['responses'][response]['responseParameters']
     return parameters in response_params
 
+
 def get_integration_response_parameters(spec, path, verb, response):
     return get_apigateway_integration(spec, path, verb)['responses'][response]['responseParameters']
+
 
 def get_integration_verb(spec, path, verb):
     return get_apigateway_integration(spec, path, verb)['httpMethod']

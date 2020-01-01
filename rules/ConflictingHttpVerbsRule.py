@@ -1,5 +1,5 @@
 from rule_validator import RuleViolation
-from rules.rules_helper import contains_apigateway_integration, get_integration_verb, get_apigateway_integration
+from rules.rules_helper import contains_apigateway_integration, get_integration_verb
 
 
 class ConflictingHttpVerbsRule:
