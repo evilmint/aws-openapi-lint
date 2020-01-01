@@ -23,14 +23,10 @@ class CORSInconsistentHeadersRule:
 
                 response_params = get_integration_response_parameters(spec, path, 'options', response)
 
-                if 'method.response.header.Access-Control-Allow-Headers' not in response_params:
-                    violations.append(RuleViolation('options_cors_incosistent_headers',
-                                                    message='No OPTIONS',
-                                                    path=path))
-                else:
-                    methods = response_params['method.response.header.Access-Control-Allow-Headers']
+                if 'method.response.header.Access-Control-Allow-Headers' in response_params:
+                    allow_headers_value = response_params['method.response.header.Access-Control-Allow-Headers']
 
-                    split_headers = map(lambda x: x.strip(), methods[1:-1].split(','))
+                    split_headers = map(lambda x: x.strip(), allow_headers_value[1:-1].split(','))
                     split_headers = filter(lambda h: len(h.strip()) > 0, split_headers)
 
                     symmetric_difference = set(headers).symmetric_difference(set(split_headers))
