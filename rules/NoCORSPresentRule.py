@@ -1,4 +1,5 @@
 from rule_validator import RuleViolation
+from rules.rules_helper import path_contains_verb, get_apigateway_integration, get_integration_response_parameters
 
 
 class NoCORSPresentRule:
@@ -9,19 +10,18 @@ class NoCORSPresentRule:
         violations = []
 
         for path in spec['paths']:
-            if 'options' not in spec['paths'][path]:
+            if not path_contains_verb(spec, path, 'options'):
                 continue
-            path_verb = 'options'
 
-            integration = spec['paths'][path][path_verb]['x-amazon-apigateway-integration']
+            integration = get_apigateway_integration(spec, path, 'options')
 
             for response in integration['responses']:
-                if 'responses' not in integration or response not in integration['responses'] or \
+                if response not in integration['responses'] or \
                         'responseParameters' not in integration['responses'][response]:
                     violations.append(self.no_options_present_rule_violation(path))
                     continue
 
-                response_params = integration['responses'][response]['responseParameters']
+                response_params = get_integration_response_parameters(spec, path, 'options', response)
 
                 if 'method.response.header.Access-Control-Allow-Origin' not in response_params or \
                         'method.response.header.Access-Control-Allow-Methods' not in response_params or \

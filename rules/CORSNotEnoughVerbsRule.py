@@ -1,4 +1,6 @@
 from rule_validator import RuleViolation
+from rules.rules_helper import get_path_verbs, get_apigateway_integration, path_contains_verb, \
+    get_integration_response_parameters
 
 
 class CORSNotEnoughVerbsRule:
@@ -9,14 +11,12 @@ class CORSNotEnoughVerbsRule:
         violations = []
 
         for path in spec['paths']:
-            if 'options' not in spec['paths'][path]:
+            if not path_contains_verb(spec, path, 'options'):
                 violations.append(self.missing_options_verb_rule_violation(path))
                 continue
 
-            integration = spec['paths'][path]['options']['x-amazon-apigateway-integration']
-
-            verbs = spec['paths'][path].keys()
-            verbs = map(lambda x: x.lower(), verbs)
+            integration = get_apigateway_integration(spec, path, 'options')
+            verbs = get_path_verbs(spec, path)
 
             for response in integration['responses']:
                 if 'responses' not in integration or response not in integration['responses'] or \
@@ -24,7 +24,7 @@ class CORSNotEnoughVerbsRule:
                     violations.append(self.missing_options_verb_rule_violation(path))
                     continue
 
-                response_params = integration['responses'][response]['responseParameters']
+                response_params = get_integration_response_parameters(spec, path, 'options', response)
 
                 if 'method.response.header.Access-Control-Allow-Methods' not in response_params:
                     violations.append(self.missing_options_verb_rule_violation(path))

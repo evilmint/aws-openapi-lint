@@ -1,6 +1,6 @@
-import re
-
 from rule_validator import RuleViolation
+from rules.rules_helper import find_path_params, contains_apigateway_integration, contains_request_parameters, \
+    get_apigateway_integration
 
 
 class PathParamNotMappedRule:
@@ -11,18 +11,17 @@ class PathParamNotMappedRule:
         violations = []
 
         for path in spec['paths']:
-            path_params = re.findall(r'(\{[a-zA-Z _\-0-9]+\})', path)
-            path_params = map(lambda x: x.replace('{', '').replace('}', ''), path_params)
+            path_params = find_path_params(path)
 
             for path_verb in spec['paths'][path]:
                 if path_verb.lower() == 'options':
                     continue
 
-                if 'x-amazon-apigateway-integration' not in spec['paths'][path][path_verb] \
-                        or 'requestParameters' not in spec['paths'][path][path_verb]['x-amazon-apigateway-integration']:
+                if not contains_apigateway_integration(spec['paths'][path][path_verb]) \
+                        or not contains_request_parameters(spec['paths'][path][path_verb]):
                     continue
 
-                integration = spec['paths'][path][path_verb]['x-amazon-apigateway-integration']
+                integration = get_apigateway_integration(spec, path, path_verb)
 
                 if integration['type'].lower() == 'mock':
                     continue
@@ -37,3 +36,4 @@ class PathParamNotMappedRule:
                                                         path=path))
 
         return violations
+

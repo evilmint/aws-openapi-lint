@@ -1,4 +1,5 @@
 from rule_validator import RuleViolation
+from rules.rules_helper import contains_apigateway_integration, get_integration_verb, get_apigateway_integration
 
 
 class ConflictingHttpVerbsRule:
@@ -12,13 +13,10 @@ class ConflictingHttpVerbsRule:
                 if path_verb.lower() == 'options':
                     continue
 
-                if 'x-amazon-apigateway-integration' not in spec['paths'][path][path_verb]:
+                if not contains_apigateway_integration(spec['paths'][path][path_verb]):
                     continue
 
-                if 'httpMethod' not in spec['paths'][path][path_verb]['x-amazon-apigateway-integration']:
-                    continue
-
-                integration_verb = spec['paths'][path][path_verb]['x-amazon-apigateway-integration']['httpMethod']
+                integration_verb = get_integration_verb(spec, path, path_verb)
 
                 if path_verb.lower() != integration_verb.lower():
                     message = 'Path verb "%s" is not equal to integration httpMethod verb "%s".' \
