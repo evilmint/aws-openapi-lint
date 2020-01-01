@@ -36,9 +36,11 @@ if __name__ == '__main__':
         exit(1)
 
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('lint', help='sum the integers (default: find the max)')
-    parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False)
-    parser.add_argument('--warning-threshold', default=-1, type=int)
+    parser.add_argument('lint', help='Specify path to the openapi schema file.')
+    parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False,
+                        help='Treats errors as warnings (exit code will be 0 unless warning threshold is specified')
+    parser.add_argument('--warning-threshold', default=-1, type=int, help='Warning threshold which when surpassed '
+                                                                          'renders exit code to become 1)')
 
     args = parser.parse_args()
 

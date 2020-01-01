@@ -47,6 +47,27 @@ or simply add the script directory's path to `$PATH` by running
 
 ## Usage
 
-Run `aws-openapi-lint path/to/spec.yml`
+Run `aws-openapi-lint lint path/to/spec.yml`
+
+```
+usage: aws-openapi-lint [-h] [--treat-errors-as-warnings]
+               [--warning-threshold WARNING_THRESHOLD]
+               lint
+
+Process some integers.
+
+positional arguments:
+  lint                  Specify path to the openapi schema file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --treat-errors-as-warnings
+                        Treats errors as warnings (exit code will be 0 unless
+                        warning threshold is specified
+  --warning-threshold WARNING_THRESHOLD
+                        Warning threshold which when surpassed renders exit
+                        code to become 1)
+
+```
 
 The program terminates with exit code equal to the amount of violations found.
