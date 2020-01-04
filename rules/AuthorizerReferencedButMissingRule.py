@@ -1,6 +1,6 @@
 from rule_validator import RuleViolation
 from rules.rules_helper import contains_apigateway_integration, contains_request_parameters, \
-    authorizer_referenced_in_request_params, has_security_components
+    authorizer_referenced_in_request_params, has_security_components, get_path_verbs
 
 
 class AuthorizerReferencedButMissingRule:
@@ -10,8 +10,8 @@ class AuthorizerReferencedButMissingRule:
     def validate(self, spec):
         violations = []
         for path in spec['paths']:
-            for path_verb in spec['paths'][path]:
-                if path_verb.lower() == 'options':
+            for path_verb in get_path_verbs(spec, path):
+                if path_verb == 'options':
                     continue
 
                 if not contains_apigateway_integration(spec['paths'][path][path_verb]) \

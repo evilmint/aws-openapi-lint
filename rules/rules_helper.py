@@ -67,7 +67,4 @@ def authorizer_referenced_in_request_params(spec, path, verb) -> bool:
 
 def has_security_components(spec, path, verb):
     has_security = 'security' in spec['paths'][path][verb]
-
-    if has_security and len(spec['paths'][path][verb]['security']) > 0:
-        return True
-    return False
+    return has_security and len(spec['paths'][path][verb]['security']) > 0

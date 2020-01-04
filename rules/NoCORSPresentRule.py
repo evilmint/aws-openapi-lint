@@ -23,14 +23,17 @@ class NoCORSPresentRule:
 
                 response_params = get_integration_response_parameters(spec, path, 'options', response)
 
-                if 'method.response.header.Access-Control-Allow-Origin' not in response_params or \
-                        'method.response.header.Access-Control-Allow-Methods' not in response_params or \
-                        'method.response.header.Access-Control-Allow-Headers' not in response_params:
+                if self.response_params_contain_access_control_headers(response_params):
                     violations.append(RuleViolation('options_no_cors_present',
                                                     message='No CORS present.',
                                                     path=path))
 
         return violations
+
+    def response_params_contain_access_control_headers(self, response_params):
+        return 'method.response.header.Access-Control-Allow-Origin' in response_params and \
+               'method.response.header.Access-Control-Allow-Methods' in response_params and \
+               'method.response.header.Access-Control-Allow-Headers' in response_params
 
     def no_options_present_rule_violation(self, path):
         return RuleViolation('options_no_cors_present',

@@ -16,7 +16,7 @@ class CORSNotEnoughVerbsRule:
                 continue
 
             integration = get_apigateway_integration(spec, path, 'options')
-            verbs = get_path_verbs(spec, path)
+            path_verbs = get_path_verbs(spec, path)
 
             for response in integration['responses']:
                 if 'responses' not in integration or response not in integration['responses'] or \
@@ -29,14 +29,13 @@ class CORSNotEnoughVerbsRule:
                 if 'method.response.header.Access-Control-Allow-Methods' not in response_params:
                     violations.append(self.missing_options_verb_rule_violation(path))
                 else:
-                    methods = response_params['method.response.header.Access-Control-Allow-Methods']
+                    allow_methods_value = response_params['method.response.header.Access-Control-Allow-Methods']
+                    integration_verbs = map(lambda x: x.lower().strip(), allow_methods_value[1:-1].split(','))
 
-                    split_methods = map(lambda x: x.lower().strip(), methods[1:-1].split(','))
+                    verbs_difference = set(path_verbs).symmetric_difference(set(integration_verbs))
 
-                    symmetric_difference = set(verbs).symmetric_difference(set(split_methods))
-
-                    for unsupported_verb in symmetric_difference:
-                        message = 'Extra HTTP verb {} included in path or request mapping.'.format(unsupported_verb)
+                    for verb in verbs_difference:
+                        message = 'Extra HTTP verb {} included in path or request mapping.'.format(verb)
                         violations.append(RuleViolation('options_cors_not_enough_verbs',
                                                         message=message,
                                                         path=path))

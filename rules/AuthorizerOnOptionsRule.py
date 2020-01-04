@@ -1,4 +1,5 @@
 from rule_validator import RuleViolation
+from rules.rules_helper import get_path_verbs, has_security_components
 
 
 class AuthorizerOnOptionsRule:
@@ -8,13 +9,11 @@ class AuthorizerOnOptionsRule:
     def validate(self, spec):
         violations = []
         for path in spec['paths']:
-            for path_verb in spec['paths'][path]:
-                if path_verb.lower() != 'options':
+            for path_verb in get_path_verbs(spec, path):
+                if path_verb != 'options':
                     continue
 
-                has_security = 'security' in spec['paths'][path][path_verb]
-
-                if has_security:
+                if has_security_components(spec, path, path_verb):
                     violations.append(RuleViolation('authorizer_on_options',
                                                     message='Unexpected authorizer on OPTIONS.',
                                                     path=path))
