@@ -23,7 +23,7 @@ class NoCORSPresentRule:
 
                 response_params = get_integration_response_parameters(spec, path, 'options', response)
 
-                if self.response_params_contain_access_control_headers(response_params):
+                if not self.response_params_contain_access_control_headers(response_params):
                     violations.append(RuleViolation('options_no_cors_present',
                                                     message='No CORS present.',
                                                     path=path))
