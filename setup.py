@@ -5,8 +5,8 @@ README = os.path.join(os.path.dirname(__file__), 'README.md')
 long_description = open(README).read()
 
 setup(
-   name='AWS OpenAPI Lint',
-   version='0.1.4',
+   name='AWS-OpenAPI-Lint',
+   version='0.1.5',
    url='https://github.com/evilmint/aws-openapi-lint',
    download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.2.tar.gz',
    description='AWS API Gateway OpenAPI spec linter',
