@@ -6,7 +6,7 @@ long_description = open(README).read()
 
 setup(
    name='AWS OpenAPI Lint',
-   version='0.1.2',
+   version='0.1.4',
    url='https://github.com/evilmint/aws-openapi-lint',
    download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.2.tar.gz',
    description='AWS API Gateway OpenAPI spec linter',
@@ -18,7 +18,7 @@ setup(
    packages=find_packages(),
    keywords=['aws', 'openapi', 'linter'],
    include_package_data=True,
-   install_requires=['PyYAML==5.1.2'],
+   install_requires=['PyYAML>=5,<=5.5'],
    entry_points={
       'console_scripts': [
          'aws-openapi-lint=aws_openapi_lint:cli'
