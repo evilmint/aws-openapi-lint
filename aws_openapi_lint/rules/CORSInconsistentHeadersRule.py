@@ -1,5 +1,5 @@
-from rule_validator import RuleViolation
-from rules.rules_helper import get_apigateway_integration, get_path_headers, get_integration_response_parameters, \
+from .rule_validator import RuleViolation
+from .rules_helper import get_apigateway_integration, get_path_headers, get_integration_response_parameters, \
     get_path_verbs
 
 

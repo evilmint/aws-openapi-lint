@@ -1,5 +1,5 @@
-from rule_validator import RuleViolation
-from rules.rules_helper import get_path_verbs, has_security_components
+from .rule_validator import RuleViolation
+from .rules_helper import get_path_verbs, has_security_components
 
 
 class AuthorizerOnOptionsRule:

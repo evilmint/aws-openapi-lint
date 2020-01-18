@@ -1,5 +1,5 @@
-from rule_validator import RuleViolation
-from rules.rules_helper import contains_apigateway_integration, contains_request_parameters, \
+from .rule_validator import RuleViolation
+from .rules_helper import contains_apigateway_integration, contains_request_parameters, \
     authorizer_referenced_in_request_params, has_security_components, get_path_verbs
 
 

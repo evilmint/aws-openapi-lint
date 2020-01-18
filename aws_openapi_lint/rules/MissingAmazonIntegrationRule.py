@@ -1,5 +1,5 @@
-from rule_validator import RuleViolation
-from rules.rules_helper import contains_apigateway_integration, get_path_verbs
+from .rule_validator import RuleViolation
+from .rules_helper import contains_apigateway_integration, get_path_verbs
 
 
 class MissingAmazonIntegrationRule:

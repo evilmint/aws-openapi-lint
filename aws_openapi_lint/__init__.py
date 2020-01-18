@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # coding=utf-8
 
-from bcolors import bcolors
-from rules.CORSInconsistentHeadersRule import CORSInconsistentHeadersRule
-from rules.CORSNotEnoughVerbsRule import CORSNotEnoughVerbsRule
-from rules.ConflictingHttpVerbsRule import ConflictingHttpVerbsRule
-from rules.MissingAmazonIntegrationRule import MissingAmazonIntegrationRule
-from rules.NoCORSPresentRule import NoCORSPresentRule
-from rules.PathParamNotMappedRule import PathParamNotMappedRule
-from rules.AuthorizerOnOptionsRule import AuthorizerOnOptionsRule
-from rules.AuthorizerReferencedButMissingRule import AuthorizerReferencedButMissingRule
-from rule_validator import RuleValidator
+from .bcolors import bcolors
+from .rules.CORSInconsistentHeadersRule import CORSInconsistentHeadersRule
+from .rules.CORSNotEnoughVerbsRule import CORSNotEnoughVerbsRule
+from .rules.ConflictingHttpVerbsRule import ConflictingHttpVerbsRule
+from .rules.MissingAmazonIntegrationRule import MissingAmazonIntegrationRule
+from .rules.NoCORSPresentRule import NoCORSPresentRule
+from .rules.PathParamNotMappedRule import PathParamNotMappedRule
+from .rules.AuthorizerOnOptionsRule import AuthorizerOnOptionsRule
+from .rules.AuthorizerReferencedButMissingRule import AuthorizerReferencedButMissingRule
+from .rules.rule_validator import RuleValidator
 import sys
 import argparse
 
@@ -40,7 +40,7 @@ def parse_arguments():
     return parser.parse_args()
 
 
-if __name__ == '__main__':
+def cli(args=None, input_format="yaml", program_name="yq"):
     if len(sys.argv) == 1:
         print('File path not passed as command line argument.')
         exit(1)

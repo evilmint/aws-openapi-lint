@@ -1,5 +1,5 @@
-from rule_validator import RuleViolation
-from rules.rules_helper import path_contains_verb, get_apigateway_integration, get_integration_response_parameters
+from .rule_validator import RuleViolation
+from .rules_helper import path_contains_verb, get_apigateway_integration, get_integration_response_parameters
 
 
 class NoCORSPresentRule:
