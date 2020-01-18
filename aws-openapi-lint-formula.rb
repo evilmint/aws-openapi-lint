@@ -1,4 +1,6 @@
 class AwsOpenapiLint < Formula
+  include Language::Python::Virtualenv
+
   desc "AWS Gateway Integration linter for OpenAPI 3.0.x specs"
   homepage "https://github.com/evilmint/aws-openapi-lint"
   head "https://github.com/evilmint/aws-openapi-lint.git"
