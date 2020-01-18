@@ -4,11 +4,13 @@ setup(
    name='AWS OpenAPI Lint',
    version='0.1.0',
    url='https://github.com/evilmint/aws-openapi-lint',
+   download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.0.tar.gz',
    description='AWS API Gateway OpenAPI spec linter.',
    author='Aleksander Lorenc',
    license = 'MIT',
    author_email='lorencaleksander@gmail.com',
    packages=find_packages(),
+   keywords=['aws', 'openapi', 'linter'],
    include_package_data=True,
    install_requires=['PyYAML==5.1.2'],
    entry_points={
