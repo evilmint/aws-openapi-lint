@@ -26,28 +26,18 @@ It contains rules for checking whether:
 - [X] Add warning threshold to return with status code 0 if limit not exceeded
 - [X] Fix flake8 violations
 - [X] Add a license
-- [ ] Publish to PyPI or alike
+- [X] Publish to PyPI or alike
 - [X] Configure properly up GitHub actions to run tests on push
 
 ## Installation
 
 ```
-git clone --recursive https://github.com/evilmint/aws-openapi-lint.git
-cd aws-openapi-lint
-python setup.py install
+pip install aws-openapi-lint
 ```
-
-One of the options to use the script from the shell is to create a symlink to `main.py` by running
-
-`sudo ln -s /path/to/main.py /usr/local/bin/aws-openapi-lint`
-
-or simply add the script directory's path to `$PATH` by running
-
-`PATH=$PATH:/path/to/mainpy/dir`
 
 ## Usage
 
-Run `aws-openapi-lint path/to/spec.yml`
+`$ aws-openapi-lint path/to/spec.yml`
 
 ```
 usage: aws-openapi-lint / main.py [-h] [--treat-errors-as-warnings]
