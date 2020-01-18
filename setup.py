@@ -11,6 +11,7 @@ setup(
    download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.0.tar.gz',
    description='AWS API Gateway OpenAPI spec linter',
    long_description=long_description,
+   long_description_content_type='text/markdown',
    author='Aleksander Lorenc',
    license = 'MIT',
    author_email='lorencaleksander@gmail.com',
