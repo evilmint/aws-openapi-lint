@@ -13,7 +13,7 @@ setup(
    long_description=long_description,
    long_description_content_type='text/markdown',
    author='Aleksander Lorenc',
-   license = 'MIT',
+   license='MIT',
    author_email='lorencaleksander@gmail.com',
    packages=find_packages(),
    keywords=['aws', 'openapi', 'linter'],
