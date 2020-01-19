@@ -31,7 +31,7 @@ def print_no_violations():
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='Lint OpenAPI specifications based on AWS API Gateway.')
     parser.add_argument('lint_file', help='Specify path to the openapi schema file.')
     parser.add_argument('--treat-errors-as-warnings', action='store_const', const=True, default=False,
                         help='Treats errors as warnings (exit code will be 0 unless warning threshold is specified')

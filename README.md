@@ -40,11 +40,11 @@ pip install aws-openapi-lint
 `$ aws-openapi-lint path/to/spec.yml`
 
 ```
-usage: aws-openapi-lint / main.py [-h] [--treat-errors-as-warnings]
-               [--warning-threshold WARNING_THRESHOLD]
-               lint_file
+usage: aws-openapi-lint [-h] [--treat-errors-as-warnings]
+                        [--warning-threshold WARNING_THRESHOLD]
+                        lint_file
 
-Process some integers.
+Lint OpenAPI specifications based on AWS API Gateway.
 
 positional arguments:
   lint_file             Specify path to the openapi schema file.
