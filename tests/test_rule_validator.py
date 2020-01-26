@@ -50,7 +50,7 @@ class RuleValidatorTestCase(unittest.TestCase):
 
     def test_should_return_integration_base_uri_rule_violation(self):
         rule_validator = RuleValidator(spec_path('conflicting_base_uri'))
-        rule_validator.add_rule(IntegrationBaseUriRule(base_uri = 'e'))
+        rule_validator.add_rule(IntegrationBaseUriRule(base_uri='e'))
         self.assertEqual([RuleViolation('integration_base_uri')], rule_validator.validate())
 
     def test_ok_spec(self):

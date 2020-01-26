@@ -71,7 +71,7 @@ def cli(args=None, input_format="yaml", program_name="aws-openapi-lint"):
         rule_validator.add_rule(rule)
 
     if args.check_base_uri != "":
-        rule_validator.add_rule(IntegrationBaseUriRule(base_uri = args.check_base_uri))
+        rule_validator.add_rule(IntegrationBaseUriRule(base_uri=args.check_base_uri))
 
     violations = rule_validator.validate()
 

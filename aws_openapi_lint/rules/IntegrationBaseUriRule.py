@@ -21,7 +21,8 @@ class IntegrationBaseUriRule:
 
                 if not integration_uri.startswith(self.base_uri):
                     violations.append(RuleViolation('integration_base_uri',
-                                                    message='Base URI "%s" not present at the beginning of URI "%s"' % (self.base_uri, integration_uri),
+                                                    message='Base URI "{}" not present at the beginning of URI "{}"'
+                                                    .format(self.base_uri, integration_uri),
                                                     path=path))
 
         return violations
