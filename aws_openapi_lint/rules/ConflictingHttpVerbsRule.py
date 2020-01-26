@@ -4,7 +4,7 @@ from .rules_helper import contains_apigateway_integration, get_integration_verb,
 
 class ConflictingHttpVerbsRule:
     def __init__(self):
-        pass
+        self.rule_name = 'conflicting_http_verbs'
 
     def validate(self, spec):
         violations = []

@@ -21,8 +21,7 @@ It contains rules for checking whether:
 
 - [X] Support json specs
 - [ ] Ignore path-params if `http_proxy` integration type used
-- [ ] Add option to disable rules via CLI
-- [ ] Add option to disable rules for specific paths
+- [X] Add option to disable rules via CLI
 - [X] Add warning threshold to return with status code 0 if limit not exceeded
 - [X] Fix flake8 violations
 - [X] Add a license
@@ -40,9 +39,10 @@ pip install aws-openapi-lint
 `$ aws-openapi-lint path/to/spec.yml`
 
 ```
-usage: aws-openapi-lint [-h] [--treat-errors-as-warnings]
-                        [--warning-threshold WARNING_THRESHOLD]
-                        lint_file
+usage: main.py [-h] [--treat-errors-as-warnings]
+               [--warning-threshold WARNING_THRESHOLD]
+               [--exclude-rules EXCLUDE_RULES]
+               lint_file
 
 Lint OpenAPI specifications based on AWS API Gateway.
 
@@ -57,7 +57,7 @@ optional arguments:
   --warning-threshold WARNING_THRESHOLD
                         Warning threshold which when surpassed renders exit
                         code to become 1)
+  --exclude-rules EXCLUDE_RULES
+                        Excluded rules separated by comma.
 
 ```
-
-The program terminates with exit code equal to the amount of violations found.

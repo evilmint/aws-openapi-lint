@@ -5,7 +5,7 @@ from .rules_helper import contains_apigateway_integration, contains_request_para
 
 class AuthorizerReferencedButMissingRule:
     def __init__(self):
-        pass
+        self.rule_name = 'authorizer_referenced_but_missing'
 
     def validate(self, spec):
         violations = []

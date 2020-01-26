@@ -4,7 +4,7 @@ from .rules_helper import contains_apigateway_integration, get_path_verbs
 
 class MissingAmazonIntegrationRule:
     def __init__(self):
-        pass
+        self.rule_name = 'missing_amazon_integration'
 
     def validate(self, spec):
         violations = []

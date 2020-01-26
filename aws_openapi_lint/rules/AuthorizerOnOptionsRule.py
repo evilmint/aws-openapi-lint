@@ -4,7 +4,7 @@ from .rules_helper import get_path_verbs, has_security_components
 
 class AuthorizerOnOptionsRule:
     def __init__(self):
-        pass
+        self.rule_name = 'authorizer_on_options'
 
     def validate(self, spec):
         violations = []

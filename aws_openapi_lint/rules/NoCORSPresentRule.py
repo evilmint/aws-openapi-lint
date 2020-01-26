@@ -4,7 +4,7 @@ from .rules_helper import path_contains_verb, get_apigateway_integration, get_in
 
 class NoCORSPresentRule:
     def __init__(self):
-        pass
+        self.rule_name = 'options_no_cors_present'
 
     def validate(self, spec):
         violations = []

@@ -5,7 +5,7 @@ from .rules_helper import get_apigateway_integration, get_path_headers, get_inte
 
 class CORSInconsistentHeadersRule:
     def __init__(self):
-        pass
+        self.rule_name = 'options_cors_incosistent_headers'
 
     def validate(self, spec):
         violations = []

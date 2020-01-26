@@ -5,7 +5,7 @@ from .rules_helper import get_path_verbs, get_apigateway_integration, path_conta
 
 class CORSNotEnoughVerbsRule:
     def __init__(self):
-        pass
+        self.rule_name = 'options_cors_not_enough_verbs'
 
     def validate(self, spec):
         violations = []

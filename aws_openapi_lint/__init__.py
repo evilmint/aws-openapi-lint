@@ -37,25 +37,35 @@ def parse_arguments():
                         help='Treats errors as warnings (exit code will be 0 unless warning threshold is specified')
     parser.add_argument('--warning-threshold', default=-1, type=int, help='Warning threshold which when surpassed '
                                                                           'renders exit code to become 1)')
+    parser.add_argument('--exclude-rules', default="", type=str, help='Excluded rules separated by comma.')
     return parser.parse_args()
 
 
-def cli(args=None, input_format="yaml", program_name="yq"):
+def cli(args=None, input_format="yaml", program_name="aws-openapi-lint"):
     if len(sys.argv) == 1:
         print('File path not passed as command line argument.')
         exit(1)
 
     args = parse_arguments()
 
+    supported_rules = [
+        ConflictingHttpVerbsRule(),
+        MissingAmazonIntegrationRule(),
+        PathParamNotMappedRule(),
+        AuthorizerOnOptionsRule(),
+        AuthorizerReferencedButMissingRule(),
+        NoCORSPresentRule(),
+        CORSNotEnoughVerbsRule(),
+        CORSInconsistentHeadersRule()
+    ]
+
+    exclude_rules = args.exclude_rules.split(",")
+    effective_rules = filter(lambda r: r.rule_name not in exclude_rules, supported_rules)
+
     rule_validator = RuleValidator(args.lint_file)
-    rule_validator.add_rule(ConflictingHttpVerbsRule())
-    rule_validator.add_rule(MissingAmazonIntegrationRule())
-    rule_validator.add_rule(PathParamNotMappedRule())
-    rule_validator.add_rule(AuthorizerOnOptionsRule())
-    rule_validator.add_rule(AuthorizerReferencedButMissingRule())
-    rule_validator.add_rule(NoCORSPresentRule())
-    rule_validator.add_rule(CORSNotEnoughVerbsRule())
-    rule_validator.add_rule(CORSInconsistentHeadersRule())
+
+    for rule in effective_rules:
+        rule_validator.add_rule(rule)
 
     violations = rule_validator.validate()
 

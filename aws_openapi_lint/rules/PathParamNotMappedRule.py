@@ -5,7 +5,7 @@ from .rules_helper import find_path_params, contains_apigateway_integration, con
 
 class PathParamNotMappedRule:
     def __init__(self):
-        pass
+        self.rule_name = 'path_parameter_not_mapped'
 
     def validate(self, spec):
         violations = []
