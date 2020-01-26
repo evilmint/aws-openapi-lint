@@ -8,7 +8,7 @@ setup(
    name='AWS-OpenAPI-Lint',
    version='0.2.0',
    url='https://github.com/evilmint/aws-openapi-lint',
-   download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.7.tar.gz',
+   download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.2.0.tar.gz',
    description='AWS API Gateway OpenAPI spec linter',
    long_description=long_description,
    long_description_content_type='text/markdown',
