@@ -6,7 +6,7 @@ long_description = open(README).read()
 
 setup(
    name='AWS-OpenAPI-Lint',
-   version='0.1.7',
+   version='0.2.0',
    url='https://github.com/evilmint/aws-openapi-lint',
    download_url='https://github.com/evilmint/aws-openapi-lint/archive/0.1.7.tar.gz',
    description='AWS API Gateway OpenAPI spec linter',

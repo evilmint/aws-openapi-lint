@@ -13,3 +13,19 @@ paths:
         uri: "http://some.uri"
         passthroughBehavior: "when_no_match"
         httpMethod: "GET"
+    options:
+      responses:
+        200:
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        type: "mock"
+        uri: "http://some.uri"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "OPTIONS"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "''"
+              method.response.header.Access-Control-Allow-Origin: "'*'"

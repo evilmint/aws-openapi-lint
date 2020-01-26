@@ -15,6 +15,8 @@ class NoCORSPresentRule:
 
             integration = get_apigateway_integration(spec, path, 'options')
 
+            print(integration)
+
             for response in integration['responses']:
                 if response not in integration['responses'] or \
                         'responseParameters' not in integration['responses'][response]:

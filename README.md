@@ -21,7 +21,7 @@ It contains rules for checking whether:
 
 - [ ] Update README with rule names and behavior
 - [X] Support json specs
-- [ ] Add optional rule for checking base url equality & whether suffix after base url is the same in integration
+- [X] Add optional rule for checking base url equality
 - [ ] Ignore path-params if `http_proxy` integration type used
 - [X] Add option to disable rules via CLI
 - [X] Add warning threshold to return with status code 0 if limit not exceeded

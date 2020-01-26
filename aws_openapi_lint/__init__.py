@@ -5,6 +5,7 @@ from .bcolors import bcolors
 from .rules.CORSInconsistentHeadersRule import CORSInconsistentHeadersRule
 from .rules.CORSNotEnoughVerbsRule import CORSNotEnoughVerbsRule
 from .rules.ConflictingHttpVerbsRule import ConflictingHttpVerbsRule
+from .rules.IntegrationBaseUriRule import IntegrationBaseUriRule
 from .rules.MissingAmazonIntegrationRule import MissingAmazonIntegrationRule
 from .rules.NoCORSPresentRule import NoCORSPresentRule
 from .rules.PathParamNotMappedRule import PathParamNotMappedRule
@@ -38,6 +39,8 @@ def parse_arguments():
     parser.add_argument('--warning-threshold', default=-1, type=int, help='Warning threshold which when surpassed '
                                                                           'renders exit code to become 1)')
     parser.add_argument('--exclude-rules', default="", type=str, help='Excluded rules separated by comma.')
+    parser.add_argument('--check-base-uri', default="", type=str, help='Checks whether every integration\'s '
+                                                                       'path is equal to the base uri specified.')
     return parser.parse_args()
 
 
@@ -66,6 +69,9 @@ def cli(args=None, input_format="yaml", program_name="aws-openapi-lint"):
 
     for rule in effective_rules:
         rule_validator.add_rule(rule)
+
+    if args.check_base_uri != "":
+        rule_validator.add_rule(IntegrationBaseUriRule(base_uri = args.check_base_uri))
 
     violations = rule_validator.validate()
 
