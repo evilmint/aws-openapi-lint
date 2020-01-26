@@ -22,6 +22,9 @@ It contains rules for checking whether:
 - [ ] Update README with rule names and behavior
 - [X] Support json specs
 - [X] Add optional rule for checking base url equality
+- [ ] Add support for configuration yaml file
+- [ ] Add possibility to disable rule checking on specific paths
+- [ ] Add possibility to disable rules per path
 - [ ] Ignore path-params if `http_proxy` integration type used
 - [X] Add option to disable rules via CLI
 - [X] Add warning threshold to return with status code 0 if limit not exceeded
