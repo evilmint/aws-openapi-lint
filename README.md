@@ -19,6 +19,7 @@ It contains rules for checking whether:
 
 ## Roadmap
 
+- [ ] Update README with rule names and behavior
 - [X] Support json specs
 - [ ] Ignore path-params if `http_proxy` integration type used
 - [X] Add option to disable rules via CLI
