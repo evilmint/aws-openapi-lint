@@ -30,12 +30,10 @@ class PathParamNotMappedRule:
 
                 request_params = integration['requestParameters']
                 request_params_values = request_params.values()
-
-                request_params_last = [value.split('.')[-1:] for value in request_params_values]
-                request_params_last = reduce(lambda x, y: x+y, request_params_last)
+                request_params_values = reduce(lambda x, y: x+y, request_params_values)
 
                 for path_param in all_path_params:
-                    if path_param not in request_params_last:
+                    if "method.request.path.%s" % path_param not in request_params_values:
                         message = 'Path parameter "{}" was not mapped in `requestParameters`.'.format(path_param)
                         violations.append(RuleViolation('path_parameter_not_mapped',
                                                         message=message,
